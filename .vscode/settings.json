@@ -1,0 +1,14 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\alireza\\Desktop\\curve-lib",
+            "binaryPath": "c:\\Users\\alireza\\Desktop\\curve-lib\\progrm",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "iqmathlib.h": "c",
+        "cubic_root.h": "c",
+        "s_curve.h": "c"
+    }
+}
