@@ -3,8 +3,8 @@
 ## intorduction
 
 <div style="font-size: 16px; text-indent:10px;">
-S-curve planning is a common practice in robotics and mechanical systems for calculating speed or position trajectories. In my case, I am running my code on a limited CPU (TMS320F280) without floating point unit and I want to avoid floating-point calculations by using Texas Instruments' fixed-point library, `IQmathLib`. 
-<p> `IQmath` library has a lot of basic operations, such as sqrt, but does not include a third root, so i had to implement a `cube_root_fast` function on 32-bit numbers, assuming 24 bit of fixed-point digits and 8 bit of signed integer</p>
+S-curve planning is a common practice in robotics and mechanical systems for calculating speed or position trajectories. In my case, I am running my code on a limited CPU (TMS320F280) without floating point unit and I want to avoid floating-point calculations by using Texas Instruments' fixed-point library, "IQmathLib". 
+<p> "IQmath" library has a lot of basic operations, such as sqrt, but does not include a third root, so i had to implement a "cube_root_fast" function on 32-bit numbers, assuming 24 bit of fixed-point fraction and 8 bit of signed integer</p>
 
 </div>
 
