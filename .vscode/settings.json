@@ -2,7 +2,12 @@
     "makefile.launchConfigurations": [
         {
             "cwd": "c:\\Users\\alireza\\Desktop\\curve-lib",
-            "binaryPath": "c:\\Users\\alireza\\Desktop\\curve-lib\\progrm",
+            "binaryPath": "c:\\Users\\alireza\\Desktop\\curve-lib\\main",
+            "binaryArgs": []
+        },
+        {
+            "cwd": "c:\\Users\\alireza\\Desktop\\curve-lib",
+            "binaryPath": "c:\\Users\\alireza\\Desktop\\curve-lib\\main.exe",
             "binaryArgs": []
         }
     ],

@@ -28,8 +28,8 @@ RampCalculationResult RampTravelDistance(_iq jerk, _iq speed_low, _iq speed_hi, 
     // calculating upward or downward ramp params. (assuming that the speed_hi can be reached) 
     _iq speed_diff = speed_hi - speed_low;
     _iq s_curve_acc; // end of s-curve acc (may be lower than max_acc)
-    _iq const_acc_time;
-    RampCalculationResult R = {false, 0, 0, 0};
+    // _iq const_acc_time;
+    RampCalculationResult R = {false,0 , 0, 0, 0};
 
     // calculate s_curve based on assumption that upper and lower curve will not meet
     R.speed_diff_curve = _IQdiv(_IQmpy(max_acc, max_acc), 2 * jerk);
@@ -39,12 +39,12 @@ RampCalculationResult RampTravelDistance(_iq jerk, _iq speed_low, _iq speed_hi, 
         R.curves_are_meeting = true;
         R.speed_diff_curve = speed_diff / 2;
         s_curve_acc = _IQsqrt(_IQmpy(2 * R.speed_diff_curve, jerk));
-        const_acc_time = 0;
+        R.const_acc_time = 0;
     }
     else
     {
         s_curve_acc = max_acc;
-        const_acc_time = _IQdiv(speed_diff - R.speed_diff_curve * 2, s_curve_acc);
+        R.const_acc_time = _IQdiv(speed_diff - R.speed_diff_curve * 2, s_curve_acc);
     }
     R.curve_time = _IQdiv(s_curve_acc, jerk);
 
@@ -56,7 +56,7 @@ RampCalculationResult RampTravelDistance(_iq jerk, _iq speed_low, _iq speed_hi, 
     //    // upper curve
     //    travel += _IQmpy(speed_hi,curve_time);// - curve_time*curve_time*s_curve_acc/6;
     // simple method
-    R.travel = _IQmpy((speed_low + speed_hi) / 2, const_acc_time + R.curve_time * 2);
+    R.travel = _IQmpy((speed_low + speed_hi) / 2, R.const_acc_time + R.curve_time * 2);
     return R;
 }
 
@@ -97,13 +97,13 @@ S_CurveResult calculate_speed_params(_iq jerk, _iq max_acc, _iq max_dcc, _iq spe
         else
         {
             // curves should meet
-            // this this scenario we assume the following conditions:
+            // REQUIRED_ASSUMPTIONS: in this scenario we assume the following conditions:
             // 1. dcc == acc
             // 2. speed_end == speed_start (v1==v3)
             // 3. v1 << v2
             _iq d = distance / 2;
             speed_max = cube_root_fast(_IQmpy(_IQmpy(d, d), jerk));
-            speed_max += speed_start * 2 / 3;
+            speed_max -= speed_start / 3;
             max_dcc = max_acc;
             speed_end = speed_start;
             R1 = RampTravelDistance(jerk, speed_start, speed_max, max_acc);

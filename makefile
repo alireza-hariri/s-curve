@@ -32,6 +32,9 @@ $(shell mkdir -p $(BUILD_DIR))
 .PHONY: all
 all: $(TARGET)
 
+print:
+	@echo $(SOURCES) 
+
 # Compile source files into object files
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CXX) $(CXXFLAGS) -c $< -o $@

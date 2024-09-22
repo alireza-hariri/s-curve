@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "s_curve.h"
 #include "cubic_root.h"
+// #include "move.h"
 
 // testing my fucntions
 bool testing_CubicRoot()
@@ -71,7 +72,9 @@ bool testing_calculate_speed_params()
     middle_travel = distance - r.up_ramp.travel - r.down_ramp.travel;
     all_test_pass &= is_close(_IQ(0.0), middle_travel);
 
-    // speed curves are meeting
+    // speed curves are meeting 
+    // up-ramp and down-ramp of speed are meeting
+    // we have initial speed
     distance = _IQ(1.5);
     r = calculate_speed_params(
         _IQ(1.5), // jerk
@@ -85,6 +88,20 @@ bool testing_calculate_speed_params()
     all_test_pass &= is_close(_IQ(0.0), middle_travel);
     all_test_pass &= is_close(r.max_possible_speed, r.up_ramp.speed_diff_curve*2);
     
+    // speed curves are meeting and 
+    distance = _IQ(0.2);
+    r = calculate_speed_params(
+        _IQ(0.125), // jerk
+        _IQ(0.5), // acc
+        _IQ(0.5), // dcc
+        _IQ(0.01), // v1
+        _IQ(0.5), // v2
+        _IQ(0.01), // v3
+        distance);
+    middle_travel = distance - r.up_ramp.travel - r.down_ramp.travel;
+    // in this case we don't do exact calculatins and so there is more error here
+    // see REQUIRED_ASSUMPTIONS in the function comments
+    all_test_pass &= is_close(_IQ(0.0), middle_travel/10);
 
     printf("full-ramp tests: %s\n", all_test_pass ? "pass" : "fail");
     return all_test_pass;
@@ -92,6 +109,8 @@ bool testing_calculate_speed_params()
 
 int main()
 {
+    
+    // draw_curve();
     bool test_res1 = testing_CubicRoot();
     bool test_res2 = testing_RampTravelDistance();
     bool test_res3 = testing_calculate_speed_params();
