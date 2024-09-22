@@ -8,7 +8,7 @@ S-curve planning is a common practice in robotics and mechanical systems for cal
 
 </div>
 
-### debugging in vscode
+## debugging in vscode
 First of all, I don't have any expertise in C debuggers, and they seem somewhat magical to me. Anyway, this repository has a normal Makefile and can be debugged using VSCode's `Makefile Tools` extension.  
 
 Keep in mind that all numbers have 24 bits of fixed precision, and to see their real values in debugger you should divide them by `16777216.0`. 
