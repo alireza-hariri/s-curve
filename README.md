@@ -9,10 +9,29 @@ S-curve planning is a common practice in robotics and mechanical systems for cal
 </div>
 
 ### debugging in vscode
-First of all, I am not an expert in C debuggers, and they seem somewhat magical to me. Anyway, this repository has a normal Makefile and can be debugged using VSCode's `Makefile Tools` extension.  
+First of all, I don't have any expertise in C debuggers, and they seem somewhat magical to me. Anyway, this repository has a normal Makefile and can be debugged using VSCode's `Makefile Tools` extension.  
 
 Keep in mind that all numbers have 24 bits of fixed precision, and to see their real values in debugger you should divide them by `16777216.0`. 
 
 ## other repos
 - [s-curve implementation in rust](https://github.com/marcbone/s_curve)
 - [s-curve implementation in python](https://github.com/nameofuser1/py-scurve)
+
+## exmple
+
+![s-cure speed plots](imgs/plot.png)
+
+in the above image you can see 3 example calculations 
+
+**blue:** travel_distance and jerk are small 
+-> can't reach max_acceleration an max_speed conditions
+
+**green:** travel_distance and jerk are bigger 
+-> can reach max_acceleration an max_speed conditions
+
+**orange:** travel_distance is small and jerk is big
+-> can reach max_acceleration but can't reach max_speed
+
+
+> **Notice:** plot drawing code is not included here, sorry that's all i can share.
+
