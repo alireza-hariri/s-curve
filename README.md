@@ -23,15 +23,20 @@ Keep in mind that all numbers have 24 bits of fixed precision, and to see their 
 
 in the above image you can see 3 example calculations 
 
-**blue:** travel_distance and jerk are small 
--> can't reach max_acceleration an max_speed conditions
+> **blue:**  
+> - `travel_distance` and `jerk` are small  
+> - can't reach `max_acceleration` an `max_speed` conditions
 
-**green:** travel_distance and jerk are bigger 
--> can reach max_acceleration an max_speed conditions
+>**green:** 
+> - `travel_distance` and `jerk` are bigger  
+> - `max_acceleration` and `max_speed` conditions can be reached
 
-**orange:** travel_distance is small and jerk is big
--> can reach max_acceleration but can't reach max_speed
+>**orange:** 
+> - `travel_distance` is small and `jerk` is big
+> - can reach `max_acceleration` but can't reach `max_speed`
 
+<br/>
 
-> **Notice:** plot drawing code is not included here, sorry that's all i can share.
+> **Notice:**  
+> plot drawing code and some other codes are not included here, sorry that's all i can share.
 
