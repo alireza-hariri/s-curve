@@ -25,7 +25,7 @@ in the above image you can see 3 example calculations
 
 > **blue:**  
 > - `travel_distance` and `jerk` are small  
-> - can't reach `max_acceleration` an `max_speed` conditions
+> - can't reach `max_acceleration` and `max_speed` conditions
 
 >**green:** 
 > - `travel_distance` and `jerk` are bigger  
